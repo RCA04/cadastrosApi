@@ -12,7 +12,7 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        //
+        return Pessoa::all();
     }
 
     /**
@@ -27,8 +27,16 @@ class PessoaController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    { {
+            $data = $request->validate([
+                'nome' => 'required|string',
+                'sobrenome' => 'required|string',
+                'cpf' => 'required|string|unique:pessoas',
+                'telefone' => 'nullable|string',
+            ]);
+
+            return Pessoa::create($data);
+        }
     }
 
     /**
