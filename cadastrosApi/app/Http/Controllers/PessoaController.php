@@ -44,7 +44,7 @@ class PessoaController extends Controller
      */
     public function show(Pessoa $pessoa)
     {
-        //
+        return response()->json($pessoa);
     }
 
     /**
