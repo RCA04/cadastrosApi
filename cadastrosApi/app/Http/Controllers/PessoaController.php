@@ -68,6 +68,7 @@ class PessoaController extends Controller
      */
     public function destroy(Pessoa $pessoa)
     {
-        //
+        $pessoa->delete();
+        return response()->json(['mensagem' => 'Usuario deletado com sucesso'], 200);
     }
 }
