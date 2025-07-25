@@ -52,7 +52,7 @@ class PessoaController extends Controller
      */
     public function edit(Pessoa $pessoa)
     {
-        //
+
     }
 
     /**
@@ -60,7 +60,13 @@ class PessoaController extends Controller
      */
     public function update(Request $request, Pessoa $pessoa)
     {
-        //
+        $data = $request->validate([
+            'nome' => 'required|string',
+            'sobrenome' => 'required|string',
+            'telefone' => 'nullable|string',
+        ]);
+
+        $pessoa->update($data);
     }
 
     /**
@@ -69,6 +75,5 @@ class PessoaController extends Controller
     public function destroy(Pessoa $pessoa)
     {
         $pessoa->delete();
-        return response()->json(['mensagem' => 'Usuario deletado com sucesso'], 200);
     }
 }
